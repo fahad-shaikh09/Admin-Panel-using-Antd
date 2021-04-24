@@ -11,15 +11,19 @@ import Form from "../components/pages/form";
 import Welcome from "../components/pages/welcome";
 import NotFound from "./../components/pages/404"
 import SideNav from "../components/layouts/sidebar";
+
 import { Layout } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
 const Routes = () => {
   const [collapse, setCollapse] = useState(false);
+  
   useEffect(() => {
+    console.log("window.innerWidth;", window.innerWidth)
     window.innerWidth <= 760 ? setCollapse(true) : setCollapse(false);
   }, []);
+
   const handleToggle = (event) => {
     event.preventDefault();
     collapse ? setCollapse(false) : setCollapse(true);
@@ -27,6 +31,7 @@ const Routes = () => {
   return (
     <Router>
       <Layout>
+       
         <Sider trigger={null} collapsible collapsed={collapse}>
           <SideNav />
         </Sider>
